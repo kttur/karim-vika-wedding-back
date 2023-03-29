@@ -11,10 +11,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Deploy Docker Compose
         env:
-          DEPLOY_SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          DEPLOY_USER: ${{ secrets.SSH_USER }}
-          DEPLOY_HOST: ${{ secrets.SSH_HOST }}
-          DEPLOY_COMMAND: ${{ secrets.SSH_COMMAND }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_COMMAND: ${{ secrets.DEPLOY_COMMAND }}
         run: |
           echo "DEPLOY_SSH_KEY" > /tmp/deploy_key
           chmod 600 /tmp/deploy_key
