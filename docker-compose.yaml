@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    hostname: wedding_api
+    ports:
+      - "8000:8000"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: /bin/bash -c "python main.py"
+    env_file:
+      - .env
+    volumes:
+      - ~/client_secret.json:/app/client_secret.json
