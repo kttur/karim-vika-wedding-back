@@ -26,12 +26,12 @@ class App:
 
     def __register_routes(self):
         @self.app.get("/guests")
-        def get_guests():
+        def get_guests() -> list[Guest]:
             guests = self.guest_repository.list()
             return guests
 
         @self.app.post("/guests")
-        def post_guest(guest: Guest):
+        def post_guest(guest: Guest) -> Guest:
             self.guest_repository.add(guest)
             return guest
 
