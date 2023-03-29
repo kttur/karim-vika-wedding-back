@@ -13,3 +13,4 @@ services:
       - .env
     volumes:
       - ~/client_secret.json:/app/client_secret.json
+      - ./data.db:/app/data.db
