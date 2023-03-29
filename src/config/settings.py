@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     GOOGLE_APPLICATION_CREDENTIALS_FILE_PATH: str | None = Field(
         default=None, env="GOOGLE_APPLICATION_CREDENTIALS_FILE_PATH"
     )
-    GUEST_SPREADSHEET_ID: str = Field(
+    GUEST_SPREADSHEET_ID: str | None = Field(
         env="GUEST_SPREADSHEET_ID"
     )
     LOG_LEVEL: str = Field(default="INFO", env="LOG_LEVEL")
