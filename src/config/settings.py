@@ -2,6 +2,11 @@ from pydantic import BaseSettings, Field
 
 
 class Settings(BaseSettings):
+    CORS_ORIGINS: list[str] = Field(
+        default=["*"],
+        env="CORS_ORIGINS",
+        description="A list of origins that should be allowed to make cross-origin requests.",
+    )
     HOST: str = Field(default="0.0.0.0", env="HOST")
     PORT: int = Field(default=8000, env="PORT")
     GOOGLE_APPLICATION_CREDENTIALS: str | None = Field(

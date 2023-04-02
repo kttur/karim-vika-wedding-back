@@ -1,6 +1,7 @@
 import uvicorn
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from src.config.settings import Settings
 from src.entities.guest import Guest
@@ -23,6 +24,13 @@ class App:
                 raise ValueError(f"Invalid repository type: {settings.REPOSITORY_TYPE}")
         self.app = FastAPI()
         self.__register_routes()
+        self.app.add_middleware(
+            CORSMiddleware,
+            allow_origins=self.settings.CORS_ORIGINS,
+            allow_credentials=True,
+            allow_methods=["*"],
+            allow_headers=["*"],
+        )
 
     def __register_routes(self):
         @self.app.get("/guests")
