@@ -23,7 +23,6 @@ class App:
             case _:
                 raise ValueError(f"Invalid repository type: {settings.REPOSITORY_TYPE}")
         self.app = FastAPI()
-        self.__register_routes()
         self.app.add_middleware(
             CORSMiddleware,
             allow_origins=self.settings.CORS_ORIGINS,
@@ -31,6 +30,7 @@ class App:
             allow_methods=["*"],
             allow_headers=["*"],
         )
+        self.__register_routes()
 
     def __register_routes(self):
         @self.app.get("/guests")
